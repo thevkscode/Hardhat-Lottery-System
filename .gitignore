@@ -1,0 +1,11 @@
+.vscode
+# hardhat
+artifacts
+cache
+deployments
+node_modules
+coverage
+coverage.json
+typechain-types
+# don't push the enviroment variable
+.env
