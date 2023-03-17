@@ -24,6 +24,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
           });
           describe("enterRaffle", () => {
               it("revert when u don't pay enough", async () => {
+                  console.log(ethers.utils.raffleEntranceFee);
                   await expect(raffle.enterRaffle()).to.be.revertedWith(
                       "Raffle__NotEnoughEthEntered"
                   );

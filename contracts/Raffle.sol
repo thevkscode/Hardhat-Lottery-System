@@ -8,7 +8,7 @@ pragma solidity ^0.8.7;
 // import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol"; //for fulfillRandomWords()
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol"; //for requesting random winner
-import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol"; //to impliment checkUpkeep ()and performUpkeep()
+import "@chainlink/contracts/src/v0.8/interfaces/AutomationCompatibleInterface.sol"; //to impliment checkUpkeep ()and performUpkeep()
 // import "@chainlink/contracts/src/v0.8/ConfirmedOwner.sol";
 error Raffle__NotEnoughEthEntered();
 error Raffle__TransferFailed();
@@ -20,7 +20,7 @@ error Raffle__UpkeepNotNeeded(uint256 currbalance, uint256 numPLayers, uint256 r
  *@notice This contract is for creating an untamprable decetralized smart contract
  *@dev this implements chainlink vrf v2 and chainlink keepers
  */
-contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
+contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     /*Type declaration*/
     enum RaffleState {
         OPEN,

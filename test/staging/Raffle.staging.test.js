@@ -59,5 +59,5 @@ developmentChains.includes(network.name)
  * 3.Register the contract with Chainlink VRF and it's subId
  * 4.Register the contract with Chainlink Keepers
  * 5.Run staging test
- * syntest:yarn hardhat test --netwrok goerli
+ * syntest:yarn hardhat test --netwrok goerli/sepolia
  */

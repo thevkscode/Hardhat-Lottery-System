@@ -7,16 +7,25 @@ require("hardhat-contract-sizer");
 require("dotenv").config();
 /** @type import('hardhat/config').HardhatUserConfig */
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL;
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
 const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY;
+const SEPOLIA_PRIVATE_KEY = process.env.SEPOLIA_PRIVATE_KEY;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 module.exports = {
     defaultNetwork: "hardhat",
     networks: {
+        sepolia: {
+            url: SEPOLIA_RPC_URL,
+            chainId: 11155111,
+            accounts: [SEPOLIA_PRIVATE_KEY],
+            blockConfirmations: 10,
+            saveDeployments: true,
+        },
         goerli: {
             url: GOERLI_RPC_URL,
             chainId: 5,
             accounts: [GOERLI_PRIVATE_KEY],
-            blockConfirmations: 10,
+            blockConfirmations: 6,
             saveDeployments: true,
         },
         hardhat: {
@@ -30,14 +39,22 @@ module.exports = {
     },
     etherscan: {
         // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
-        apiKey: { goerli: ETHERSCAN_API_KEY },
-        customcChains: [
+        apiKey: ETHERSCAN_API_KEY,
+        customChains: [
             {
                 network: "goerli",
                 chainId: 5,
                 urls: {
-                    apiURL: "https://api-goerli.etherscan.io/api",
+                    apiURL: `https://api-goerli.etherscan.io/${ETHERSCAN_API_KEY}`,
                     browserURL: "https://goerli.etherscan.io",
+                },
+            },
+            {
+                network: "sepolia",
+                chainId: 11155111,
+                urls: {
+                    apiURL: `https://api-sepolia.etherscan.io/${ETHERSCAN_API_KEY}`,
+                    browserURL: "https://sepolia.etherscan.io",
                 },
             },
         ],
