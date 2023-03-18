@@ -47,7 +47,7 @@ Before running the lottery system, you will need to configure the Chainlink VRF 
 
 ### Keepers
 
-1. Create an account on [KeeperDAO](https://app.keep3r.network/)
+1. Create an account on [Automation|Chainklink](https://automation.chain.link/)
 2. Fund your account with KPR tokens
 3. Create a job on KeeperDAO using the provided documentation
 4. Copy the job ID and paste it in the `hardhat.config.js` file
